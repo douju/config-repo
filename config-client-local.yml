@@ -1,0 +1,28 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+
+jwt:
+  # secret
+  secret: iwqjhda8232bjgh432[cicada-smile]
+  # token有效时长
+  expiration: 3600
+  # header 名称
+  tokenHead: token
+
+swagger:
+  profiles: local,dev #置可以打开swagger的环境
+  basePackage: com.huawei.housekeeper.controller #swagger扫描的controller包
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    # 发送心跳间隔时间 30s
+    lease-renewal-interval-in-seconds: 30
+    # 90s 内未收到心跳则判断为过期
+    lease-expiration-duration-in-seconds: 90
+  client:
+    service-url.defaultZone: ${eureka.defaultZone}:8100/eureka/
+    register-with-eureka: true
+    fetch-registry: true
